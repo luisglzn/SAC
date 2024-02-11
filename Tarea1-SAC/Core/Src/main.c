@@ -82,7 +82,7 @@ static void MX_USB_OTG_FS_PCD_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+	int estado_boton1 = 0;
 /* USER CODE END 0 */
 
 /**
@@ -125,7 +125,16 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
+      if (estado_boton1 == 1) // Se pulsa el botón
+      {
+          HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0); // Cambio al estado contrario de como estuviese
+          HAL_Delay(500); // 2Hz = 0.5s = 500ms
+      }
+      else
+      {
+          HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET); // Apago el led
 
+      }
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -324,11 +333,11 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(USB_PowerSwitchOn_GPIO_Port, USB_PowerSwitchOn_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin : USER_Btn_Pin */
-  GPIO_InitStruct.Pin = USER_Btn_Pin;
+  /*Configure GPIO pin : PC13 */
+  GPIO_InitStruct.Pin = GPIO_PIN_13;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(USER_Btn_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /*Configure GPIO pins : LD1_Pin LD3_Pin LD2_Pin */
   GPIO_InitStruct.Pin = LD1_Pin|LD3_Pin|LD2_Pin;
@@ -355,6 +364,11 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+    estado_boton1 = estado_boton1 == 0 ? 1 : 0; // Conmuta el estado de 0 a 1 y de 1 a 0 cuando es pulsado
+    // Es importante que en el .ioc estén configurados los pines de los botones como GPIO_EXTI
+}
 
 /* USER CODE END 4 */
 
