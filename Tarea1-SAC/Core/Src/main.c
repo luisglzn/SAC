@@ -68,6 +68,8 @@ static void MX_USB_PCD_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 uint16_t estado_boton1 = 0;
+uint16_t estado_boton2_actual = 0;
+uint16_t estado_boton2_anterior = 0;
 /* USER CODE END 0 */
 
 /**
@@ -115,10 +117,21 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	  // ### COMENTARIOS ACERCA DEL CÓDIGO Y USO ###
+//	  	  -	En vez de usar las interrupciones se usa la librería HAL
+//		  - Los Delay de 200 y 300 son para ajustar los 500ms de los 2HZ
+//		  - Si apagar el LED con el primer botón, a veces hay que pulsar dos veces seguidas el botón porque no coge bien el input
 	  if(HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_13) == 1) // Cuando el botón es pulsado
 	 	  {
 	 		  estado_boton1 = estado_boton1 == 0?1:0; // Complementamos el estado en el que se encontrase
 	 	  }
+	  else
+	  {
+		  if(HAL_GPIO_ReadPin(GPIOF,GPIO_PIN_14) == 1)
+		  {
+			  estado_boton2_actual = estado_boton2_anterior == 0?1:0; // Complementamos el estado en el que se encontrase
+		  }
+	  }
 
 	 	  HAL_Delay(200); // Delay para actualizar el valor del estado del botón
 
@@ -126,10 +139,26 @@ int main(void)
 	 	  {
 	 		  HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_7); // Encendemos y apagamos el LED
 	 		  HAL_Delay(300); // La suma de los Delays es 500ms = 0.5s = 2HZ
+	 		 if(estado_boton2_actual != estado_boton2_anterior) //Si cambia el estado del segundo botón
+	 		 {
+				  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_RESET); //Apago el pin
+				  estado_boton1 = 0; //Forzamos el apagado del led
+				  estado_boton2_anterior = estado_boton2_actual; //Actualizo el estado del botón 2
+			  }
 	 	  }
 	 	  else
 	 	  {
 	 		  HAL_GPIO_WritePin(GPIOC,GPIO_PIN_7,RESET); // Si estado_boton1 == 0, apagamos el pin
+	 		  if(estado_boton2_actual != estado_boton2_anterior) // Si cambia el estado del segundo botón
+	 		  {
+	 			  for(int i = 0; i < 3; i++) // Parpadea 3 veces
+	 			  {
+	 				 HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_7);
+	 				 HAL_Delay(500);
+	 			  }
+
+			  }
+			  estado_boton2_anterior = estado_boton2_actual; //Actualizo el estado del botón 2
 	 	  }
   }
   /* USER CODE END 3 */
