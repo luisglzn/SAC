@@ -9,7 +9,7 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
--include Drivers/STM32F7xx_HAL_Driver/Src/subdir.mk
+-include Drivers/STM32L5xx_HAL_Driver/Src/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
 -include objects.mk
@@ -60,8 +60,8 @@ all: main-build
 main-build: Tarea1-SAC.elf secondary-outputs
 
 # Tool invocations
-Tarea1-SAC.elf Tarea1-SAC.map: $(OBJS) $(USER_OBJS) C:\Users\luisg\STM32CubeIDE\workspace_1.13.1\Tarea1-SAC\STM32F746ZGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Tarea1-SAC.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"C:\Users\luisg\STM32CubeIDE\workspace_1.13.1\Tarea1-SAC\STM32F746ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Tarea1-SAC.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Tarea1-SAC.elf Tarea1-SAC.map: $(OBJS) $(USER_OBJS) C:\Users\luisg\OneDrive\Documentos\GitHub\SAC\Tarea1-SAC\STM32L552ZETXQ_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Tarea1-SAC.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m33 -T"C:\Users\luisg\OneDrive\Documentos\GitHub\SAC\Tarea1-SAC\STM32L552ZETXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="Tarea1-SAC.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
