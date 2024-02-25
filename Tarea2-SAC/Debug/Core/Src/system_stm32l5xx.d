@@ -1,6 +1,6 @@
 Core/Src/system_stm32l5xx.o: ../Core/Src/system_stm32l5xx.c \
  ../Drivers/CMSIS/Device/ST/STM32L5xx/Include/stm32l5xx.h \
- ../Drivers/CMSIS/Device/ST/STM32L5xx/Include/stm32l552xx.h \
+ ../Drivers/CMSIS/Device/ST/STM32L5xx/Include/stm32l562xx.h \
  ../Drivers/CMSIS/Include/core_cm33.h \
  ../Drivers/CMSIS/Include/cmsis_version.h \
  ../Drivers/CMSIS/Include/cmsis_compiler.h \
@@ -18,9 +18,6 @@ Core/Src/system_stm32l5xx.o: ../Core/Src/system_stm32l5xx.c \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_dma.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_dma_ex.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_cortex.h \
- ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_adc.h \
- ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_adc.h \
- ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_adc_ex.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_exti.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_flash.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_flash_ex.h \
@@ -28,17 +25,12 @@ Core/Src/system_stm32l5xx.o: ../Core/Src/system_stm32l5xx.c \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_i2c.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_i2c_ex.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_icache.h \
- ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_pcd.h \
- ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_usb.h \
- ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_pcd_ex.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_pwr.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_pwr_ex.h \
- ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_rtc.h \
- ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_rtc_ex.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_uart.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_uart_ex.h
 ../Drivers/CMSIS/Device/ST/STM32L5xx/Include/stm32l5xx.h:
-../Drivers/CMSIS/Device/ST/STM32L5xx/Include/stm32l552xx.h:
+../Drivers/CMSIS/Device/ST/STM32L5xx/Include/stm32l562xx.h:
 ../Drivers/CMSIS/Include/core_cm33.h:
 ../Drivers/CMSIS/Include/cmsis_version.h:
 ../Drivers/CMSIS/Include/cmsis_compiler.h:
@@ -56,9 +48,6 @@ Core/Src/system_stm32l5xx.o: ../Core/Src/system_stm32l5xx.c \
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_dma.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_dma_ex.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_cortex.h:
-../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_adc.h:
-../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_adc.h:
-../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_adc_ex.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_exti.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_flash.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_flash_ex.h:
@@ -66,12 +55,7 @@ Core/Src/system_stm32l5xx.o: ../Core/Src/system_stm32l5xx.c \
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_i2c.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_i2c_ex.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_icache.h:
-../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_pcd.h:
-../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_usb.h:
-../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_pcd_ex.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_pwr.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_pwr_ex.h:
-../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_rtc.h:
-../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_rtc_ex.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_uart.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_uart_ex.h:

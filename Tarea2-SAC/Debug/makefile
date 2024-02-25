@@ -34,34 +34,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := Tarea2
+BUILD_ARTIFACT_NAME := testPrint
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-Tarea2.elf \
+testPrint.elf \
 
 MAP_FILES += \
-Tarea2.map \
+testPrint.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-Tarea2.list \
+testPrint.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: Tarea2.elf secondary-outputs
+main-build: testPrint.elf secondary-outputs
 
 # Tool invocations
-Tarea2.elf Tarea2.map: $(OBJS) $(USER_OBJS) C:\Users\luisg\STM32CubeIDE\workspace_1.13.1\Tarea2\STM32L552ZETXQ_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Tarea2.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m33 -T"C:\Users\luisg\STM32CubeIDE\workspace_1.13.1\Tarea2\STM32L552ZETXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="Tarea2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+testPrint.elf testPrint.map: $(OBJS) $(USER_OBJS) C:\Users\cebre\STM32CubeIDE\workspace_1.13.2\testPrint\STM32L562QEIXQ_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "testPrint.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m33 -T"C:\Users\cebre\STM32CubeIDE\workspace_1.13.2\testPrint\STM32L562QEIXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="testPrint.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -70,14 +70,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-Tarea2.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "Tarea2.list"
+testPrint.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "testPrint.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) Tarea2.elf Tarea2.list Tarea2.map default.size.stdout
+	-$(RM) default.size.stdout testPrint.elf testPrint.list testPrint.map
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
